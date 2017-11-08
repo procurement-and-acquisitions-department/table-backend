@@ -19,6 +19,7 @@ db.once('open', () => {
 var server = http.createServer((req, res) => {
   router(req, res, (err) => {
     res.end('Not Found')
+    console.log(err)
   })
 })
 
