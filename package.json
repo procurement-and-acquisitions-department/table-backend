@@ -18,7 +18,11 @@
     "eslint-plugin-standard": "^3.0.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "run-db": "docker run -d -p 27017:27107 -v ~/data:/data/db mongo"
   },
   "repository": {
     "type": "git",
