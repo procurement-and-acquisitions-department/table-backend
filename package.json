@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "mongoose": "^4.13.0"
+    "mongoose": "^4.13.0",
+    "router": "^1.3.2"
   },
   "devDependencies": {
     "eslint": "^4.10.0",
@@ -16,7 +17,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "run-db": "docker run -d -p 27017:27107 -v db:/data/db mongo"
+    "init-db": "docker run --name GamingTableDB --restart=always -d -p 27017:27017 mongo mongod --auth",
+    "start-db": "docker start GamingTableDB",
+    "stop-db": "docker stop GamingTableDB"
   },
   "repository": {
     "type": "git",
