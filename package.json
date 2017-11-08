@@ -4,10 +4,6 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "flux": "^3.1.3",
-    "next": "^4.1.4",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0"
   },
   "devDependencies": {
     "eslint": "^4.10.0",
@@ -19,9 +15,6 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "next",
-    "build": "next build",
-    "start": "next start",
     "run-db": "docker run -d -p 27017:27107 -v db:/data/db mongo"
   },
   "repository": {
