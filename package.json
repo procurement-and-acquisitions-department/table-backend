@@ -22,7 +22,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "run-db": "docker run -d -p 27017:27107 -v ~/data:/data/db mongo"
+    "run-db": "docker run -d -p 27017:27107 -v db:/data/db mongo"
   },
   "repository": {
     "type": "git",
