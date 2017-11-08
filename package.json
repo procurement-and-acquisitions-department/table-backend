@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "mongoose": "^4.13.0"
   },
   "devDependencies": {
     "eslint": "^4.10.0",
