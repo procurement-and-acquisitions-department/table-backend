@@ -1,12 +1,13 @@
-const http = require('http')
 const mongoose = require('mongoose')
 const dotenv = require('dotenv').config()
 const express = require('express')
-const app = express()
+const bodyParser = require('body-parser')
 const jwt = require('express-jwt')
 const jwks = require('jwks-rsa')
 
 const userRouter = require('./routers/user')
+
+const app = express()
 
 mongoose.connect('mongodb://127.0.0.1/gamingTable', {
   useMongoClient: true
@@ -33,6 +34,7 @@ const jwtCheck = jwt({
 })
 
 app.use(jwtCheck)
+app.use(bodyParser.json())
 
 app.use('/users/', userRouter)
 
