@@ -3,10 +3,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const userSchema = new Schema({
-  ID: {
-    type: String,
-    required: true
-  },
+  userID: String,
   username: {
     type: String,
     required: true
@@ -14,6 +11,10 @@ const userSchema = new Schema({
   name: {
     type: String,
     required: true
+  },
+  roles: {
+    type: Array,
+    default: []
   },
   pronouns: {
     active: String,

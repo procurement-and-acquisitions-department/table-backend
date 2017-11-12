@@ -1,8 +1,16 @@
 const Express = require('express')
+
+const User = require('../models/user')
+
 let userRouter = Express.Router()
 
 userRouter.get('/', (req, res) => {
-  res.end('user list')
+  User.find({}, (err, users) => {
+    if (err) {
+      res.status(500).end(err.toString())
+    }
+    res.status(200).end(JSON.stringify(users))
+  })
 })
 
 userRouter.get('/:userId', (req, res) => {
