@@ -23,7 +23,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "init-db": "docker run --name GamingTableDB --restart=always -d -p 27017:27017 mongo mongod --auth",
+    "init-db": "docker run --name GamingTableDB --restart=always -d -p 27017:27017 mongo mongod",
     "start-db": "docker start GamingTableDB",
     "stop-db": "docker stop GamingTableDB"
   },
