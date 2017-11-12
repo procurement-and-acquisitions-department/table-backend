@@ -1,10 +1,10 @@
 const http = require('http')
-const Router = require('router')
 const mongoose = require('mongoose')
-
-let router = Router()
-
-const userRouter = require('./routers/user')
+const dotenv = require('dotenv').config()
+const express = require('express')
+const app = express()
+const jwt = require('express-jwt')
+const jwks = require('jwks-rsa')
 
 mongoose.connect('mongodb://127.0.0.1/gamingTable', {
   useMongoClient: true
@@ -16,22 +16,22 @@ db.once('open', () => {
   console.log('connected!')
 })
 
-var server = http.createServer((req, res) => {
-  router(req, res, (err) => {
-    res.end('Not Found')
-    console.log(err)
-  })
+const jwtCheck = jwt({
+  secret: jwks.expressJwtSecret({
+    cache: true,
+    rateLimit: true,
+    jwksRequestsPerMinute: 5,
+    jwksUri: 'https://' + process.env.'.auth0.com/.well-known/jwks.json'
+  }),
+  audience: 'http://localhost:3000',
+  issuer: 'https://' + process.env.AUTH0_USERNAME + '.auth0.com/',
+  algorithms: ['RS256']
 })
 
-router.use('/users/', userRouter)
+app.use(jwtCheck)
 
-router.get('/', function (req, res) {
-  res.setHeader('Content-Type', 'text/plain; charset=utf-8')
-  res.end('Hello World!')
+app.get('/authorized', function (req, res) {
+  res.send('Secured Resource')
 })
 
-router.use(function (err, req, res, next) {
-  res.end(err.message)
-})
-
-server.listen(3000)
+app.listen(3000)
